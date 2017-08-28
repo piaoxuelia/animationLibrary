@@ -1,0 +1,76 @@
+
+	<%include inc/header.inc%>
+	<link rel="stylesheet" type="text/css" href="/static/css/userlist.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery.gridly.css">
+
+	<script id="list-tmpl" type="text/html">
+		<div class="nav2  clearfix">
+			<div class="inner">
+			{%for (var i in result){ %}
+				<a href="#navItem{%=i%}" {%if(i==0){%}class="active"{%}%}>{%=result[i].cateName%}</a>
+			{%}%}
+			</div>
+		</div>
+		<div class="inner tools-list">
+		{%for (var i in result){ %}
+			<section {%if(i==0){%}style="display:block"{%}%}>
+				<div class="tool-tip-tips"><i>点击</i>列表可<i>编辑</i>当前工具，<i>拖动</i>可改变工具在首页的展示顺序，拖拽后点击右侧保存按钮后即可更改，<i>顺序更改后不可撤销~</i><a href="#save" class="btn btn-default js-save" data-type="{%=i%}">保存当前顺序</a></div>
+				<ul class='list gridly'>
+					{%result[i].data.forEach(function(item,i){ %}
+						<li{%if(item.imgUrl){%} class="tb-list" style="background-image:url({%=item.imgUrl%})"{%}else{%} class="tb-list no-img"{%}%}  data-toolid="{%=item.toolId%}" data-cateid="{%=item.cateId%}" >
+							<i title="{%=item.toolName%}">{%=item.toolName%}</i>
+							<i>{%=item.profile%}</i>
+							<i><a target="_blank" href="{%=item.url%}">{%=item.url%}</a></i>
+							<a href="#edit" class="tool-del-btn delete js-del" title="删除">+</a>
+						</li>
+					{%})%}
+				</ul>
+			</section>
+		{%}%}
+		</div>
+	</script>
+	
+	<div  id="content"></div>
+	
+	<script src="/static/js/ejs.js"></script>
+	<script src="/static/js/jquery.gridly.js"></script>
+	<script type="text/javascript" src="/static/js/userInf.js"></script>
+	<script type="text/javascript" src="/static/js/getData.js"></script>
+	
+
+		<!-- 以下两段代码主要将原有的工具存入数据库中，工具名称和列表  慎用，会覆盖库中文件
+	<script type="text/javascript">
+		$(function () {
+			var cates = [ "常用工具","项目发布","测试监控","后端相关","前端相关","大搜索业务","ONEBOX业务","内网相关" ];
+			var cateObj = {};
+
+			cates.forEach(function(item,i){
+				cateObj[i] = {};
+				cateObj[i].cateName = item;
+				cateObj[i].cateId = i;
+			})
+
+		 $.ajax({
+					url: "/user/index/add",
+					data: {
+						'cateall':JSON.stringify(cateObj)
+					}
+				}).done(function(data){console.log(data)})
+		})
+
+	</script>
+	<script type="text/javascript" src="/static/js/datajson.js"></script>
+	<script type="text/javascript">
+		$.ajax({
+					url: "/user/index/list",
+					data: {
+						'listdata':JSON.stringify(dataTools)
+					},
+					type:"get"
+				}).done(function(data){console.log(data)})
+	</script>
+-->
+
+</body>
+
+</html>

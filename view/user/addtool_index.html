@@ -1,0 +1,56 @@
+<%include inc/header.inc%>
+	
+	<script id="cate-tmpl" type="text/html">
+		{%for (var i=0; i< result.length; i++){%}
+			<label id="gj-{%=i%}"><input type="checkbox" name="gj-{%=i%}" class="checkbox-inline" data-cateid={%=result[i].cateId%}> <span>{%=result[i].cateName%}</span></label>
+		{%}%}
+	</script>
+
+	<div class="form-wrap">
+		<div class="tips">注: 添加成功后默认在所选分类最后展示，若改变顺序，可在<a href="/user">工具列表</a>拖动实现</div>
+		<div class="form-title">添加工具</div>
+		<div class="table-wrap" >
+			<div class="errerTxt js-errerTxt"></div>
+			<table class="tb-default" id="tb">
+				<tr>
+					<td class="tb-left" >工具名称：</td>
+					<td class="tb-cen"><input type="text" class="form-control" placeholder="请输入工具名称，25字以内" data-name="工具名称" data-id='toolName'></td>
+					<td><i>*<i></td>
+				</tr>
+				<tr>
+					<td class="tb-left">工具地址：</td>
+					<td class="tb-cen"><input type="text" class="form-control" placeholder="请输入URL地址" data-name="工具地址"  data-id='url'></td>
+					<td><i>*<i></td>
+				</tr>
+				<tr >
+					<td class="tb-left" valign="top">所属分类：</td>
+					<td class="tb-fenlei" id="cate">
+					</td>
+					<td><i>*<i></td>
+				</tr>
+				<tr>
+					<td class="tb-left">工具简介：</td>
+					<td><input type="text" class="form-control" placeholder="一句话描述工具，50字之内"  data-name="工具简介"  data-id='profile'></td>
+					<td><i>*<i></td>
+				</tr>
+				<tr>
+					<td class="tb-left">邮箱地址：</td>
+					<td><input type="text" class="form-control" placeholder="请留下您的邮箱，以便联系" data-name="邮箱地址"  data-id='email' value="liuyingying@360.cn"></td>
+					<td><i>*<i></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="button" value="提交" class="btn btn-success js-submit"/></td>
+					<td></td>
+				</tr>
+			</table>
+			
+		</div>
+		
+	</div>
+
+	<script src="/static/js/ejs.js"></script>
+	<script type="text/javascript" src="/static/js/userInf.js"></script>
+	<script type="text/javascript" src="/static/js/useraddtools.js"></script>
+</body>
+</html>

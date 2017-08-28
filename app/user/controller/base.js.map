@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/user/controller/base.js"
+    ],
+    "names": [],
+    "mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;;AACA;;;;;;AACA,IAAM,gBAAgB,CAAC,UAAD,EAAa,aAAb,EAA2B,eAA3B,CAAtB;;;;;;;;;;;;;;kBAMQ,W;wFAAY,I;OAEd,Q,EACA,M,EAGC,U;;;;;;cAJgB,eAAK,WAAL,CAAiB,KAAK,IAAL,CAAU,GAA3B,EAAgC,KAAK,IAAL,CAAU,GAA1C,C;;;AAAjB,e;AACA,a,GAAS,KAAK,GAAL,CAAS,QAAT,C;;;AAEb,WAAG,MAAH,EAAU;AACL,kBADK,GACQ,eAAK,MAAL,CAAY,KAAK,IAAL,CAAU,GAAtB,EAA2B,KAAK,IAAL,CAAU,GAArC,CADR;;AAET,YAAG,UAAH,EAAc;AACb,cAAK,QAAL,CAAc,GAAd;AACA;AACD;;aACE,cAAc,OAAd,CAAsB,SAAS,QAA/B,MAA6C,CAAC,C;;;;;wCACzC,Q;;;AAEP,YAAK,QAAL,CAAc,GAAd;;;;;;;;;;;;;;;;;;EAnB0B,MAAM,UAAN,CAAiB,I",
+    "file": "../../../src/user/controller/base.js",
+    "sourcesContent": [
+        "'use strict';\nimport uuap from 'uuap';\nconst administrator = [\"luyuewen\", \"liuyingying\",\"huangjiaolong\"];\nexport default class extends think.controller.base {\n  /**\n   * some base method in here\n   */\n  \n  async checkAuthor(data){\n\n\t\tlet userInfo = await uuap.getUserInfo(this.http.req, this.http.res);\n\t\tlet logout = data.get(\"logout\");\n\n\t\tif(logout){\n\t\t\tlet corrLogout = uuap.logout(data.http.req, data.http.res);\n\t\t\tif(corrLogout){\n\t\t\t\tthis.redirect(\"/\")\n\t\t\t}\n\t\t}\n\t\tif(administrator.indexOf(userInfo.userName) !== -1){\n\t\t\treturn userInfo;\n\t\t}else{\n\t\t\tthis.redirect(\"/\")\n\t\t}\n\t}\n}"
+    ]
+}

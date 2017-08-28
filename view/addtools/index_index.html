@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/form.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/user.css">
+	<script src="https://s.ssl.qhimg.com/lib/jquery/183.js"></script>
+	<script id="cate-tmpl" type="text/html">
+		{%for (var i=0; i< result.length; i++){%}
+			<label id="gj-{%=i%}"><input type="checkbox" name="gj-{%=i%}" class="checkbox-inline" data-cateid={%=result[i].cateId%}> <span>{%=result[i].cateName%}</span></label>
+		{%}%}
+	</script>
+
+</head>
+
+<body class="addtoolBody">
+	
+	<div class="addtool-top">
+		<a href="/" class="logo">&nbsp;</a>
+		<h1 class="top-h1">添加工具</h1>
+	</div>
+
+	<div class="">
+		<!-- <input type="button" value="默认样式" class="btn btn-default"/>
+		<input type="button" value="默认样式" class="btn btn-success"/>
+		<input type="text" class="form-control" value="shushi"> <input type="checkbox" class="checkbox">  -->
+
+		<div class="form-wrap">
+			<!-- <div class="form-title">添加工具</div> -->
+			<div class="table-wrap" >
+				<div class="errerTxt js-errerTxt"></div>
+				<table class="tb-default" id="tb">
+					<tr>
+						<td class="tb-left" >工具名称：</td>
+						<td class="tb-cen"><input type="text" class="form-control" placeholder="请输入工具名称，25字以内" data-name="工具名称" data-id='toolName'></td>
+						<td><i>*<i></td>
+					</tr>
+					<tr>
+						<td class="tb-left">工具地址：</td>
+						<td class="tb-cen"><input type="text" class="form-control" placeholder="请输入URL地址" data-name="工具地址"  data-id='url'></td>
+						<td><i>*<i></td>
+					</tr>
+					<tr >
+						<td class="tb-left" valign="top">所属分类：</td>
+						<td class="tb-fenlei" id="cate">
+						</td>
+						<td><i>*<i></td>
+					</tr>
+					<tr>
+						<td class="tb-left">工具简介：</td>
+						<td><input type="text" class="form-control" placeholder="一句话描述工具，50字之内"  data-name="工具简介"  data-id='profile'></td>
+						<td><i>*<i></td>
+					</tr>
+					<tr>
+						<td class="tb-left">邮箱地址：</td>
+						<td><input type="text" class="form-control" placeholder="请留下您的邮箱，以便联系" data-name="邮箱地址"  data-id='email'></td>
+						<td><i>*<i></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><input type="button" value="提交" class="btn btn-success js-submit"/></td>
+						<td></td>
+					</tr>
+				</table>
+				
+			</div>
+			<div class="tips">TIPS: <br/>工具分类中“常用工具"分类是目前所有工具使用频率前15，请根据您所填写工具对应到其他类别~</div>
+		</div>
+	</div>
+	<script src="/static/js/ejs.js"></script>
+	<script type="text/javascript" src="/static/js/addtools.js"></script>
+</body>
+</html>

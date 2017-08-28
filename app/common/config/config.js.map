@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/common/config/config.js"
+    ],
+    "names": [],
+    "mappings": "AAAA;;;;;;kBAIe;AACd,QAAM;AADQ,C",
+    "file": "../../../src/common/config/config.js",
+    "sourcesContent": [
+        "'use strict';\n/**\n * config\n */\nexport default {\n\tport: 8866\n};"
+    ]
+}

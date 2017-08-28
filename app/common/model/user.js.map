@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/common/model/user.js"
+    ],
+    "names": [],
+    "mappings": "AAAA",
+    "file": "../../../src/common/model/user.js",
+    "sourcesContent": [
+        "'use strict';\n/**\n * relation model\n */\n// export default class extends think.model.relation {\n//   /**\n//    * init\n//    * @param  {} args []\n//    * @return {}         []\n//    */\n//   init(...args){\n//     super.init(...args);\n\n//     this.relation = {\n//       cate: think.model.MANY_TO_MANY,\n//       rModel: \"LIST\",\n//       rfKey: \"toolId\"\n//     }\n//   }\n// }"
+    ]
+}

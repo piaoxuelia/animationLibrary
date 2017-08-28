@@ -1,0 +1,103 @@
+	<%include inc/header.inc%>
+	<style type="text/css">
+		.tb-default td {
+				padding: 5px 10px 5px 0;
+		}
+		
+		td.tb-fenlei label {
+				margin-bottom: 14px;
+		}
+		
+		.tb-fenlei {
+				height: auto
+		}
+		.vali-list{
+			border-bottom: 1px solid #eee;
+			padding-bottom: 25px;
+			margin-bottom: 20px
+		}
+		.vali-list:last-child{
+				border-bottom: none;
+		}
+		.tips-validata-nodata{
+			text-align: center;
+			font-size: 30px;
+			min-height: 300px;
+			line-height: 280px;
+			color: #ccc;
+		}
+	</style>
+	<script id="data-tmpl" type="text/html">
+		{%for (var i=0; i< result.list.length; i++){console.log(result.list)%}
+		<div class="vali-list">
+		<div class="errerTxt js-errerTxt"></div>
+		<table class="tb-default" >
+			<tr>
+					<td class="tb-left">工具名称：</td>
+					<td class="tb-cen">
+							<input type="text" class="form-control" placeholder="" data-name="工具名称" data-id='toolName' value="{%=result.list[i].toolName%}">
+					</td>
+					<td><i>*<i></td>
+		</tr>
+		<tr>
+			<td class="tb-left">工具地址：</td>
+			<td class="tb-cen"><input type="text" class="form-control" placeholder="请输入URL地址" data-name="工具地址"  data-id='url' value="{%=result.list[i].url%}"></td>
+			<td><i>*<i></td>
+		</tr>
+		<tr>
+			<td class="tb-left">图片地址：</td>
+			<td class="tb-cen"><input type="text" class="form-control" placeholder="相对地址示例:/static/img/tools/a.jpg" data-name="图片地址"  data-id='imgUrl'></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="tb-left" valign="top">所属分类：</td>
+			<td class="tb-fenlei" id="cate">
+				{%var arrCate = result.list[i].cateId.split(',');%}
+				{%for (var j=0; j< result.cate.length; j++){%}
+					<label id="gj-{%=j%}"><input type="checkbox" name="gj-{%=j%}" class="checkbox-inline" data-cateid={%=result.cate[j].cateId%} 
+					{%arrCate.forEach(function(item,num	){%}
+							{%if(result.cate[j].cateId == item){%}checked{%}%}
+					{%})%}
+					> <span>{%=result.cate[j].cateName%}</span></label>
+				{%}%}
+			</td>
+			<td><i>*<i></td>
+		</tr>
+		<tr>
+			<td class="tb-left">工具简介：</td>
+			<td><input type="text" class="form-control" placeholder="一句话描述工具，50字之内"  data-name="工具简介"  data-id='profile' value="{%=result.list[i].profile%}"></td>
+			<td><i>*<i></td>
+		</tr>
+		<tr>
+			<td class="tb-left">联系邮箱：</td>
+			<td><input type="text" class="form-control" placeholder="请留下您的邮箱，以便联系" data-name="邮箱地址"  data-id='email' value="{%=result.list[i].email%}"></td>
+			<td><i>*<i></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="button" value="验证通过" class="btn btn-success js-submit"/></td>
+			<td><a href="javascript:;" class="js-undo">忽略</a></td>
+		</tr>
+		</table>
+		</div>
+		{%}%}
+	</script>
+	<div class="inner">
+		<!-- <input type="button" value="默认样式" class="btn btn-default"/>
+		<input type="button" value="默认样式" class="btn btn-success"/>
+		<input type="text" class="form-control" value="shushi"> <input type="checkbox" class="checkbox">  -->
+
+		<div class="form-wrap">
+			<div class="tips">注: 请仔细核对列表中的信息，验证通过后显示在首页工具列表中</div>
+			<div class="form-title">工具验证列表</div>
+			<div class="table-wrap" id="tb">
+				
+			</div>
+			<div class="tips">TIPS: <br/>工具分类中“常用工具"分类是目前所有工具使用频率前15，请根据您所填写工具对应到其他类别~</div>
+		</div>
+	</div>
+	<script src="/static/js/ejs.js"></script>
+	<script type="text/javascript" src="/static/js/userInf.js"></script>
+	<script type="text/javascript" src="/static/js/valitools.js"></script>
+</body>
+</html>
